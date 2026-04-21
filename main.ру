@@ -1,0 +1,38 @@
+import random
+import time
+
+# Константы (чистота кода: читаемо и понятно)
+SUBJECTS = ["Маленький котенок", "Хитрый хакер", "Злой робот", "Ученый"]
+VERBS = ["тихо съел", "быстро взломал", "неожиданно нашел", "сломал"]
+OBJECTS = ["вкусный сэндвич", "секретный сервер", "старый компьютер", "космический корабль"]
+
+def generate_sentence():
+    """Генерирует случайное предложение."""
+    return f"{random.choice(SUBJECTS)} {random.choice(VERBS)} {random.choice(OBJECTS)}."
+
+def main():
+    print("=== Генератор случайных предложений ===")
+    
+    while True:
+        print("\nЧто сделаем?")
+        print("1. Сгенерировать 1 предложение")
+        print("2. Выход")
+        
+        # UX: Обработка ошибок (try/except)
+        try:
+            choice = input("Введите номер (1-2): ")
+            
+            if choice == "1":
+                print(f"\nГенерирую: {generate_sentence()}")
+                time.sleep(0.5) # Красивый вывод (задержка)
+            elif choice == "2":
+                print("До свидания!")
+                break
+            else:
+                print("Ошибка: Пожалуйста, введите 1 или 2.")
+                
+        except Exception as e:
+            print(f"Произошла непредвиденная ошибка: {e}")
+
+if __name__ == "__main__":
+    main()
